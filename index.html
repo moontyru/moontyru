@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gotcha</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img class="avatar" src="/media/avatar.png" alt="avatar">
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </header>
+
+        <section class="wlc">
+            <h1>Hola</h1>
+            <p>This is Faris page, or Moontyru's page.</p>
+            <p>Anyway, take a look</p>
+        </section>
+
+        <section class="cards">
+            <div class="feature-card">
+                <h3>Discord</h3>
+                <p>Under Maintenance 🛠️⏳</p>
+            </div>
+            <div class="feature-card">
+                <div class="soc">
+                <h3>My social</h3>
+                <div></div>
+                <a href="https://www.instagram.com/moontyru" target="_blank">
+                    <img class="soc" src="/media/instagram.png" alt="Instagram">
+                </a>
+                <a href="https://tellonym.me/moontyru" target="_blank">
+                    <img class="soc" src="/media/tellonym.png" alt="Tellonym">
+                </a>
+                <a href="https://www.youtube.com/@moontyru" target="_blank">
+                    <img class="soc" src="/media/youtube.png" alt="Youtube">
+                </a>
+                <a href="https://x.com/moontyru" target="_blank">
+                    <img class="soc" src="/media/x.png" alt="X">
+                </a>
+                <a href="https://github.com/moontyru" target="_blank">
+                    <img class="soc" src="/media/github.png" alt="Github">
+                </a>
+                </div>
+            </div>
+            <div class="feature-card">
+                <h3>😴 Thinking About</h3>
+                <p>JO</p>
+
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme) {
+            body.setAttribute('data-theme', currentTheme);
+            updateToggleIcon(currentTheme);
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateToggleIcon(newTheme);
+        });
+
+        function updateToggleIcon(theme) {
+            const icon = themeToggle.querySelector('i');
+            if (theme === 'dark') {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        }
+    </script>
+</body>
+</html>
